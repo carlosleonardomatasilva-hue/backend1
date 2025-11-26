@@ -48,10 +48,10 @@ app.delete('/api/notes/:id',(request,response,next) =>{
 
 app.put('/api/notes/:id', (request, response, next) =>{
     const body = request.body
-        const note = new Note({
+        const note = {
             content: body.content,
             important: body.important
-        })
+        }
         Note.findByIdAndUpdate(request.params.id, note, {new:true})
         .then(note2 => {
             response.json(note2)
